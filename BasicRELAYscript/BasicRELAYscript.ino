@@ -1,19 +1,39 @@
-int LIGHTRELAY = 4;
-int PUMPRELAY = 5;
+const int LIGHTRELAY = 2;
+const int PUMPRELAY  = 4;
 
-//test for now. Will creat 24 clock using hours mins etc
+// Time stuff
+const unsigned long ONE_SECOND = 1000UL;
+const unsigned long ONE_MINUTE = 60UL * ONE_SECOND;
+const unsigned long ONE_HOUR   = 60UL * ONE_MINUTE;
+const unsigned long ONE_DAY    = 24UL * ONE_HOUR;
+
+
+const unsigned long LIGHTS_ON_DURATION = 8UL * ONE_HOUR;  
+
 void setup() {
   pinMode(LIGHTRELAY, OUTPUT);
-  digitalWrite(LIGHTRELAY, HIGH);  
+  pinMode(PUMPRELAY, OUTPUT);
+  digitalWrite(PUMPRELAY, HIGH);
 }
 
 void loop() {
-  digitalWrite(LIGHTRELAY, LOW);   
-  delay(500);
-  digitalWrite(LIGHTRELAY, HIGH); 
-  delay(500);
-  digitalWrite(PUMPRELAY, LOW);   
-  delay(500);
-  digitalWrite(PUMPRELAY, HIGH); 
-  delay(500);
+  unsigned long NOW = millis();
+  unsigned long TIME = NOW % ONE_DAY;
+
+  //Light
+  bool LIGHTSON = (TIME < LIGHTS_ON_DURATION);
+  
+  if (LIGHTSON) {
+    digitalWrite(LIGHTRELAY, HIGH);
+  } else {
+    digitalWrite(LIGHTRELAY, LOW);
+  }
+
+//pump
+
+// digitalWrite(PUMPRELAY, HIGH);
+
+/// 5 second delay because why not
+
+  delay(5000);  
 }
