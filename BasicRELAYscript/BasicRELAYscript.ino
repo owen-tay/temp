@@ -1,5 +1,5 @@
 const int LIGHTRELAY = 2;
-const int PUMPRELAY  = 4;
+const int PUMPRELAY  = 3;
 
 // Time stuff
 const unsigned long ONE_SECOND = 1000UL;
@@ -8,7 +8,7 @@ const unsigned long ONE_HOUR   = 60UL * ONE_MINUTE;
 const unsigned long ONE_DAY    = 24UL * ONE_HOUR;
 
 
-const unsigned long LIGHTS_ON_DURATION = 8UL * ONE_HOUR;  
+const unsigned long LIGHTS_ON_DURATION = 10UL * ONE_HOUR;  
 
 void setup() {
   pinMode(LIGHTRELAY, OUTPUT);
@@ -31,9 +31,5 @@ void loop() {
 
 //pump
 
-// digitalWrite(PUMPRELAY, HIGH);
 
-/// 5 second delay because why not
-
-  delay(5000);  
 }
